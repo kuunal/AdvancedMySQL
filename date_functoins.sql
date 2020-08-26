@@ -22,7 +22,7 @@ select date_sub(current_timestamp, interval 1 month);
 
 select curdate + 0; // date in format YYYYMMDD
 
-select date_format(curdate(), '%W %M %Y'); //week, month, year
+select date_format(curdate(), '%W %M %Y'); --week, month, year
 
 select DATEDIFF(curdate(), date_sub(curdate(), interval 5 day));
 

@@ -1,4 +1,4 @@
-SELECT asci('a'); //Returns ascii value
+SELECT asci('a'); --Returns ascii value
 
 set @dummy_var = 'HELLO WORLD';
 SELECT length(@dummy_var);
@@ -17,16 +17,15 @@ select lower(@dummy_var);
 select upper(lower(@dummy_var));
 
 
-select left(@dummy_var, 5) //gets 5 char from left
+select left(@dummy_var, 5) --gets 5 char from left
 
-select right(@dummy_var, 5); //gets 5 char from right
+select right(@dummy_var, 5); --gets 5 char from right
 
-select lpad('asdf', 8 ,'0'); // left padding
+select lpad('asdf', 8 ,'0'); --left padding
  
-SELECT POSITION('W' IN @dummy_var); // index pos
+SELECT POSITION('W' IN @dummy_var); --index pos
 
 select reverse(@dummy_var);
 
-select strcmp(@dummy_var, "HELLO WORLD"); // 0 if same, -1 if smaller, 1 if larger for str1
+select strcmp(@dummy_var, "HELLO WORLD"); --0 if same, -1 if smaller, 1 if larger for str1
 
-x

@@ -1,4 +1,5 @@
 
+--update trigger
 delimiter //
 create trigger update_trigger
 after update
@@ -8,8 +9,9 @@ begin
 insert into database_status(action) values('UPDATE');
 end //
 delimiter ;
+-------------------------------------------------------------------------------------------------------------------
 
-
+--insert trigger
 delimiter //
 create trigger insert_trigger
 after insert
@@ -19,11 +21,12 @@ begin
 insert into database_status(action) values('INSERT');
 end //
 delimiter ;
+------------------------------------------------------------------------------------------------------------------
 
-
+--delete trigger
 delimiter //
 create trigger delete
-after |DML
+after delete
 on dummy_table
 for each row
 begin
@@ -31,11 +34,6 @@ insert into database_status(action) values('DELETE');
 end //
 delimiter ;
 
-delimiter //
-create trigger create_trigger
-after create on *.*
-insert into database_status(action) values('CREATE');
-delimiter ;
 
-
-CREATE EVENT e ON DROP [DO] INSERT INTO db1.t VALUES (5); 
+--dummy event
+create event e on schedule at current_timestamp do insert into database_status(dummy_table) values('drop');

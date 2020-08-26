@@ -1,12 +1,12 @@
-Basic Syntax FOR CASE:
+/*Basic Syntax FOR CASE:
 CASE value
    WHEN value1 THEN result1
    WHEN value2 THEN result2
    …
    [ELSE else_result]
-END
+END*/
 -------------------------------------------------------------------------------------------------------------------
-CASE INSIDE OF QUEERY:
+--CASE INSIDE OF QUEERY:
 
 select (select distinct username from users where id = o.user_id), case
 when quantity > 3
@@ -17,7 +17,7 @@ else "Purchase more items to earn discount or coupon"
 end
 from orders o;
 -------------------------------------------------------------------------------------------------------------------
-PROCEDURE USING CASE:
+--PROCEDURE USING CASE:
 
 delimiter //
 create procedure delivery_time(in id int, out time varchar(199))
@@ -34,25 +34,25 @@ end case;
 end //
 delimiter ;
 -------------------------------------------------------------------------------------------------------------------
-	PROCEDURE USING CASE:
-	
-	delimiter //
-	create procedure delivery_time2(in id int, out time varchar(199))
-	begin
-	declare cust_country varchar(222);
-	select country into cust_country from customers where customerNumber=id;
-	case 
-		when cust_country='USA' then
-		set time = '2 days';
-		when cust_country='CANADA' then
-		set time = '4 days';
-		else set time = '7 days';
-	end case;
-	end //
-	delimiter ;
-	delimiter //
+--PROCEDURE USING CASE:
+
+delimiter //
+create procedure delivery_time2(in id int, out time varchar(199))
+begin
+declare cust_country varchar(222);
+select country into cust_country from customers where customerNumber=id;
+case 
+	when cust_country='USA' then
+	set time = '2 days';
+	when cust_country='CANADA' then
+	set time = '4 days';
+	else set time = '7 days';
+end case;
+end //
+delimiter ;
+delimiter //
 -------------------------------------------------------------------------------------------------------------------
-FUNCTION USING CASE:
+--FUNCTION USING CASE:
 
 create function delivery_time1(id int) returns varchar(199) 
 begin
@@ -70,7 +70,7 @@ return (time);
 end //
 delimiter ;
 -------------------------------------------------------------------------------------------------------------------
-FETCH ALL USER ALONG WITH EMAIL USING CURSOR:
+--FETCH ALL USER ALONG WITH EMAIL USING CURSOR:
 
 delimiter //
 create procedure cursor_demo(inout email_list varchar(10000))
@@ -92,7 +92,7 @@ close c1;
 end//
 delimiter ;
 ------------------------------------------------------------------------------------------------------------------
-SORT USIGN CASE:
+--SORT USIGN CASE:
 
 select title, price from product 
 order by CASE 
