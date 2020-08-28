@@ -31,5 +31,18 @@ select d.dpt_name from emp_department d inner join emp_details e on d.dpt_code =
   /*Write a SQL statement to find the details of a order i.e. order number, order date, amount of order, which customer gives the order and which salesman works for that customer and how much commission he gets for an order.*/
 select o.ord_no, o.ord_date, o.purch_amt, c.cust_name, s.name, s.commission from orders o inner join customer c on o.customer_id = c.customer_id inner join salesman s on s.salesman_id = c.salesman_id;
 
+--Update Using Joins
+ update orders inner join users on orders.user_id = users.id set quantity = 10 where users.username="asdf";
+ 
+ update orders, users set orders.quantity = 15 where orders.user_id = users.id and users.username = "asdf";
+
+update t1, t2 set t1.id = t1.id+t2.id where t1.id = t2.id;
 
 
+-- dELETE USING Joins
+delete t1 from t1 inner join t2 using (id);
+
+delete o from orders o inner join users u on o.user_id = u.id where u.username="asdf";
+
+-- insert using Joins
+insert into tracker(username, author, quantity) select u.username, p.author, o.quantity from orders o inner join product p on o.product_id = p.id inner join users u on o.user_id = u.id;
