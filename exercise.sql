@@ -38,3 +38,6 @@ select user_name, count(present) from (select distinct user_name, day(datetimeco
 
 
  select user_name, count(present) from (select distinct user_name, day(datetimecol) as present from blinfo) d group by user_name order by count(present)  limit 1 offset 3; 
+
+
+ select user_name from blinfo t1 where 3 = (select count(id) from blinfo t2 where t1.datetimecol >=t2.datetimecol);
