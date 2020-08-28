@@ -30,3 +30,7 @@ select * from employees where employee_id in (select manager_id from employees g
 /*Write a query in SQL to display the detail information of those departments which starting salary is at least 8000*/
 select * from departments where department_id in (select department_id from employees group by department_id having min(salary)>8000 );
 
+select (select concat(username," ",phone_no) as user_detail from users where id = user_id), quantity from orders;
+--------------------------------------------------------------------------------------------------------
+--GEt username and pno, product author, quantity using subquery
+select (select concat(username," ",phone_no) as user_detail from users where id = user_id), (select author from product where id = product_id), quantity from orders;

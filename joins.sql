@@ -12,8 +12,8 @@
   
 ----------------------------------------------------------------------------------------------------------------------------
   --GET ALL USERNAME, TOTAL QUANTITY AND ALL AUTHOR 
-  select u.username, sum(o.quantity), p.author from orders o right join users u on o.user_id = u.id right join product p on o.product_id = p.id group by p.author, u.username;
-  
+	  select u.username, u.phone_no, sum(o.quantity), p.author from orders o right join users u on o.user_id = u.id right join product p on o.product_id = p.id group by p.author, u.username;
+	  
  ----------------------------------------------------------------------------------------------------------------------------
  --Write a query in SQL to find the names of departments where more than two employees are working
 select d.dpt_name from emp_department d inner join emp_details e on d.dpt_code = e.emp_dept group by d.dpt_name having count(*) >2;
