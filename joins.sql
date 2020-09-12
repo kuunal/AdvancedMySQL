@@ -1,8 +1,8 @@
- 
-	--GET USERNAME, ORDER_ID AND QUANTITY FOR THAT ORDER_ID
+ --Book_Store
+	--GET USERNAME, ORDER_ID AND QUANTITY FOR THAT ORDER_ID 
   select username, quantity, order_id from orders inner join users on orders.user_id = users.id;
   
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------Book_Store
 	--GET ALL USER S ORDER_ID AND QUANTITY FOR THAT ORDER_ID
   select username, quantity, order_id from orders right join users on orders.user_id = users.id group by username;
   
@@ -12,7 +12,7 @@
   
 ----------------------------------------------------------------------------------------------------------------------------
   --GET ALL USERNAME, TOTAL QUANTITY AND ALL AUTHOR 
-	  select u.username, u.phone_no, sum(o.quantity), p.author from orders o right join users u on o.user_id = u.id right join product p on o.product_id = p.id group by p.author, u.username;
+	  select u.username, u.phone_no, sum(o.quantity), p.author from orders o  join users u on o.user_id = u.id  join product p on o.product_id = p.id group by p.author, u.username;	
 	  
  ----------------------------------------------------------------------------------------------------------------------------
  --Write a query in SQL to find the names of departments where more than two employees are working
@@ -46,3 +46,10 @@ delete o from orders o inner join users u on o.user_id = u.id where u.username="
 
 -- insert using Joins
 insert into tracker(username, author, quantity) select u.username, p.author, o.quantity from orders o inner join product p on o.product_id = p.id inner join users u on o.user_id = u.id;
+
+
+
+select t11.id,t11.name, t22.chars from t11 left join t22 using (id) union select t11.id, t11.name,t22.chars from t11 right join t22 using (id);
+
+
+select t11.id, t11.name, t22.id , t22.chars from t11 cross join t22;
