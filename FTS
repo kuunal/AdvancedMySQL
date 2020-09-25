@@ -1,0 +1,36 @@
+Full-text search is a technique to search for documents that don’t perfectly match the search criteria. Documents are database entities that contain textual data e.g., product description, blog post, and articles.
+
+For example, you can search for Wood and Metal, FTS can return results that contain the searched words separately, just Wood or Metal, or results that contain the words in a different order Word and Metal, or Metal and Wood
+
+alter table product add FULLTEXT(title);
+
+	 create fulltext index titleFT on product(title);
+	 
+	 
+	 
+	 ALTER TABLE product
+DROP INDEX titleFT;
+
+select title from product where match(title) against ('girl');
+
+boolean mode
+
+select title from product where match(title) against ('girl -sleeping' in boolean mode);
+
+–	Exclude, the word must not be present.
++	Include, the word must be present.
+
+>	Include, and increase ranking value.
+<	Include, and decrease the ranking value.
+
+he query expansion is used to widen the search result of the full-text searches based on automatic relevance feedback (or blind query expansion). Technically, MySQL full-text search engine performs the following steps when the query expansion is used:
+
+First, search for all rows that match the search query.
+Second, find the relevant words in all rows from the search result.
+Third, search again based on the relevant words instead of the original keywords specified by users.
+
+SELECT column1, column2
+FROM table1
+WHERE MATCH(column1,column2) 
+      AGAINST('keyword',WITH QUERY EXPANSION);
+	  
